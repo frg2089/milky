@@ -32,7 +32,8 @@
 
 ## Milky SDK
 
-| 语言       | 包名                                                                             |
-| ---------- | -------------------------------------------------------------------------------- |
-| TypeScript | [@saltify/milky-node-sdk](https://www.npmjs.com/package/@saltify/milky-node-sdk) |
-| Rust       | [vivian-rs](https://crates.io/crates/vivian)                                     |
+| 语言       | 包名                                                                                                                                  |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| TypeScript | [@saltify/milky-node-sdk](https://www.npmjs.com/package/@saltify/milky-node-sdk)                                                      |
+| Rust       | [vivian-rs](https://crates.io/crates/vivian)                                                                                          |
+| .Net       | [Milky.Net.Client](https://www.nuget.org/packages/Milky.Net.Client) [Milky.Net.Model](https://www.nuget.org/packages/Milky.Net.Model) |
