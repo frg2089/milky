@@ -167,6 +167,10 @@ ws://{IP}:{端口}/event?access_token=123456
 }
 ```
 
+> [!tip]
+>
+> 由于 SSE 和 WebSocket 都是由 HTTP GET 请求升级而来，协议端在确定应当提供哪种连接时，应当优先检查应用端请求中的 `Upgrade` 头，如果存在且值为 `websocket`，则视为 WebSocket 连接请求，否则视为 SSE 连接请求。
+
 ### WebHook 推送
 
 以 POST 方式向给定的 WebHook 地址推送事件。POST 请求的 body 与 WebSocket 推送的格式相同。示例如下：
