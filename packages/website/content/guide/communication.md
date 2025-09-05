@@ -92,7 +92,50 @@ Authorization: Bearer 123456
 
 ## 事件推送
 
-事件推送服务支持两种方式：WebSocket 和 WebHook。
+事件推送服务支持三种方式：Server-Sent Events (SSE)、 WebSocket 和 WebHook。
+
+### Server-Sent Events 连接
+
+接受路径为 `/event` 的 Http Get 请求。在成功建立连接后，协议端将会推送事件。
+为防止接口被未经授权的用户访问，协议端可以验证请求头中的 `Authorization` 字段，其格式为 `Bearer {access_token}`。
+
+示例如下：
+
+```http
+GET /event
+Authorization: Bearer 123456
+```
+
+成功响应后，会收到 `Content-Type` 为 `text/event-stream` 的响应，且连接不会断开。
+
+产生事件时，此连接会接收到一条内容格式是 JSON 格式的 SSE 消息，内容格式见 [Event](https://milky.ntqqrev.org/struct/Event)。
+
+示例如下：
+
+```plain
+event: milky_event
+data: {
+data:   "time": 1234567890,
+data:   "self_id": 123456789,
+data:   "event_type": "message_receive",
+data:   "data": {
+data:     "message_scene": "friend",
+data:     "peer_id": 123456789,
+data:     "message_seq": 23333,
+data:     "sender_id": 123456789,
+data:     "time": 1234567890,
+data:     "message": [
+data:       {
+data:         "type": "text",
+data:         "data": {
+data:           "text": "Hello, world!"
+data:         }
+data:       }
+data:     ]
+data:   }
+data: }
+
+```
 
 ### WebSocket 连接
 
